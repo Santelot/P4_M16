@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P4-M16</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .subtitle {
+            font-size: 0.9em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+            const selectedTime = document.getElementById('class-time').value;
+            document.getElementById('selected-time').innerText = `Tiempo efectivo de clase: ${selectedTime} minutos`;
+
+            // Mostrar/ocultar actividades y pasos según la duración seleccionada
+            document.querySelectorAll('.activity').forEach(activity => {
+                const activityId = activity.getAttribute('id');
+
+                if (selectedTime === '45') {
+                    if (activityId === 'activity-2') {
+                        activity.style.display = 'none';
+                    } else {
+                        activity.style.display = 'block';
+                    }
+                } else if (selectedTime === '40') {
+                    if (activityId === 'activity-2') {
+                        activity.style.display = 'none';
+                    } else if (activityId === 'activity-3-step-6') {
+                        document.getElementById('activity-3-step-6').style.display = 'none';
+                    } else {
+                        activity.style.display = 'block';
+                    }
+                } else {
+                    // Clase de 50 minutos, mostrar todo
+                    activity.style.display = 'block';
+                    if (activityId === 'activity-3-step-6') {
+                        document.getElementById('activity-3-step-6').style.display = 'block';
+                    }
+                }
+            });
+        }
+
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            content.style.display = content.style.display === "none" ? "block" : "none";
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Playbook-P4-M16</h1>
+    </div>
+
+    <div class="container">
+        <div class="dropdown">
+            <label for="class-time">Tiempo efectivo de Clase:</label>
+            <select id="class-time" onchange="updateActivities()">
+                <option value="50">50 minutos</option>
+                <option value="45">45 minutos</option>
+                <option value="40">40 minutos</option>
+            </select>
+        </div>
+        <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+        <!-- Actividad 0 -->
+<div id="activity-0" class="activity" data-time="50">
+    <div class="banner" onclick="toggleContent('revision_mision')" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+            <span style="font-weight: bold; font-size: 1.1em;">🔍 Actividad 0: Revisión de Misión ⏰ Tiempo: No especificado</span>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+            <span style="font-size: 0.9em; color: #e0e0e0;">Revisión inicial de materiales y recursos necesarios para la misión.</span>
+        </div>
+    </div>
+    <div id="revision_mision" class="content">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                <th style="width: 50%; padding: 10px; text-align: left;">Diálogo Sugerido</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 1:</strong> Proyectar Diapositiva 1 y verificar que estén disponibles los materiales y recursos necesarios para la misión.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    No aplica
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity" data-time="50">
+    <div class="banner" onclick="toggleContent('saludo_ritual')" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+            <span style="font-weight: bold; font-size: 1.1em;">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2 minutos</span>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+            <span style="font-size: 0.9em; color: #e0e0e0;">Introducción temática al día y bienvenida al equipo.</span>
+        </div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                <th style="width: 50%; padding: 10px; text-align: left;">Diálogo Sugerido</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 con el tema del día: Detección de Obstáculos con Sensor Ultrasónico.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Hola, Genios! 🌟 Hoy estamos a punto de embarcarnos en una aventura robótica como ninguna otra. Vamos a aprender cómo nuestros Cutebots pueden usar su sensor ultrasónico para ver el mundo y tomar decisiones inteligentes. ¡Prepárense para un día lleno de creatividad, descubrimientos y mucha diversión! 🚀"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 2 (0.5 minutos):</strong> Proyectar Diapositiva 3 "¿Cómo estás hoy?" con las nuevas poses relacionadas con la misión.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Genios! Díganme cómo están hoy:
+                    <ul>
+                        <li>Si están súper emocionados y listos para explorar, activen el Escaneo Ultrasónico colocando las manos a los lados de la cabeza como un robot y diciendo '¡beep-beep!' 🤖.</li>
+                        <li>Si necesitan un poquito más de energía para cargar baterías, pónganse en Modo Carga cruzando los brazos frente a ustedes como si estuvieran recargando. 🔋</li>
+                    </ul>
+                    ¡Vamos a medir nuestro nivel de energía antes de empezar la misión!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Ritual de Agradecimiento" y guiar a los estudiantes en el ritual temático.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Juntamos nuestras manos y decimos: <br>
+                    '¡Gracias por estar aquí, Genios! Hoy vamos a aprender cómo programar trayectorias inteligentes con sensores ultrasónicos. ¡Será un día lleno de trabajo en equipo y creatividad!' 🌟💡"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Atención, Genios! Aquí están los objetivos de nuestra misión de hoy: 
+                    <ul>
+                        <li><strong>1.</strong> Aprender a programar el sensor ultrasónico para detectar obstáculos.</li>
+                        <li><strong>2.</strong> Diseñar programas que hagan que el Cutebot reaccione de forma inteligente a su entorno.</li>
+                        <li><strong>3.</strong> Trabajar juntos para probar y mejorar nuestras creaciones.</li>
+                    </ul>
+                    ¡El futuro nos espera, y ustedes están listos para programarlo!"
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity" data-time="50">
+    <div class="banner" onclick="toggleContent('brain_vitamin')" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+            <span style="font-weight: bold; font-size: 1.1em;">🧠 Actividad 2: Brain Vitamin ⏰ Tiempo: 3 minutos</span>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+            <span style="font-size: 0.9em; color: #e0e0e0;">Ejercicio práctico para comprender el funcionamiento del sensor ultrasónico.</span>
+        </div>
+    </div>
+    <div id="brain_vitamin" class="content">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                <th style="width: 50%; padding: 10px; text-align: left;">Diálogo Sugerido</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 1 (1 minuto):</strong> Proyectar Diapositiva 6 con instrucciones para simular la detección ultrasónica mediante movimientos coordinados.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Genios! Vamos a preparar nuestras mentes para la misión simulando cómo funciona el sensor ultrasónico de nuestros Cutebots. 
+                    Levanten una mano al frente y comiencen a moverla de un lado al otro como si fuera un sensor escaneando el área. 
+                    Cada vez que encuentren un obstáculo imaginario, cambien de dirección rápidamente. ¡Vamos a calentar nuestras habilidades de lógica y coordinación!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 2 (1 minuto):</strong> Proyectar Diapositiva 7 que muestra obstáculos a diferentes distancias y pedir a los estudiantes que ajusten sus "movimientos" de sensor.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Ahora vamos a trabajar como verdaderos sensores ultrasónicos. 
+                    Si detectan un obstáculo 'cercano', levanten ambas manos en señal de '¡stop!'. 
+                    Si está 'lejos', continúen moviendo las manos suavemente. 
+                    ¡Recuerden: la precisión es clave para que nuestros Cutebots puedan navegar de manera inteligente!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 3 (1 minuto):</strong> Proyectar Diapositiva 8 y guiar una breve discusión sobre cómo el Cutebot detecta y responde a obstáculos usando programación.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Buen trabajo, Genios! Ahora piensen: si el sensor detecta un objeto a menos de 15 cm, 
+                    ¿cómo traduciríamos esa acción en programación? 
+                    ¿Qué instrucciones necesitaríamos para que el Cutebot decida detenerse o ajustar su velocidad? 
+                    ¡Recuerden, la creatividad y la lógica son nuestras herramientas más poderosas!"
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity" data-time="50">
+    <div class="banner" onclick="toggleContent('challenge')" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+            <span style="font-weight: bold; font-size: 1.1em;">🚀 Actividad 3: Challenge ⏰ Tiempo: 33 minutos</span>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+            <span style="font-size: 0.9em; color: #e0e0e0;">Reto de programación con sensores ultrasónicos y múltiples niveles de dificultad.</span>
+        </div>
+    </div>
+    <div id="challenge" class="content">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                <th style="width: 50%; padding: 10px; text-align: left;">Diálogo Sugerido</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Programación Básica con Sensor Ultrasónico" y explicar el objetivo general del reto.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Genios! Es hora de poner manos a la obra con nuestro desafío. Hoy vamos a programar a nuestros Cutebots para detectar obstáculos utilizando el sensor ultrasónico. Tendremos tres niveles de dificultad que pueden enfrentar al mismo tiempo según su capacidad: Rookie, Master y Hacker. ¡Están a punto de convertirse en genios de la programación!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Preparativos del Reto" y guiar a los estudiantes para verificar y organizar los materiales antes de comenzar.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Antes de comenzar, asegúrense de que tienen todo listo para la misión. Revisen que cuentan con: 
+                    - Los Cutebots con sensores ultrasónicos y baterías cargadas. 
+                    - La computadora o tableta para programar. 
+                    - Cinta adhesiva para delimitar el espacio. 
+                    - Objetos pequeños como obstáculos. 
+                    - Magic tablets. 
+                    ¡La preparación es clave para el éxito!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 3 (1 minuto):</strong> Proyectar Diapositiva 11 "Reglas del Desafío". Pedir a los equipos que usen cinta adhesiva para delimitar un área donde probarán el programa.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Genios! Ahora vamos a delimitar el espacio de trabajo de sus Cutebots. Usen cinta adhesiva para marcar un área rectangular de 1x2 metros. Este será el circuito donde sus Cutebots mostrarán sus habilidades. Recuerden: las trayectorias deben mantenerse dentro de este espacio, y deben evitar colisiones. ¡Es hora de programar con precisión!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 4 (2 minutos):</strong> Proyectar Diapositiva 12 "Niveles del Desafío" y detallar los objetivos y condiciones de cada nivel utilizando ejemplos visuales.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    <strong>Nivel Rookie:</strong> **"Moverse y Detenerse"**<br>
+                    <span style="color: red; font-weight: bold;">Objetivo:</span> Programar el Cutebot para avanzar y detenerse cuando detecte un obstáculo a menos de 15 cm.<br><br>
+                    <span style="color: red; font-weight: bold;">Instrucciones:</span><br>
+                    - Configura el sensor ultrasónico en el Cutebot.<br>
+                    - Programa el Cutebot para avanzar continuamente.<br>
+                    - Usa el sensor para que el Cutebot se detenga al detectar un obstáculo.<br><br>
+                    <span style="color: red; font-weight: bold;">Condiciones:</span><br>
+                    - El Cutebot debe avanzar mientras no haya obstáculos y detenerse si detecta algo cercano.<br>
+                    - Prueba con diferentes objetos como obstáculos.<br><br>
+                    
+                    <strong>Nivel Master:</strong> **"Movimiento con Precaución"**<br>
+                    <span style="color: red; font-weight: bold;">Objetivo:</span> Ajustar la velocidad según la distancia al obstáculo.<br><br>
+                    <span style="color: red; font-weight: bold;">Instrucciones:</span><br>
+                    - Configura el Cutebot para avanzar continuamente.<br>
+                    - Programa tres comportamientos:<br>
+                      1. Avanzar rápido si no hay obstáculos cercanos (>20 cm).<br>
+                      2. Reducir velocidad si el obstáculo está a 10-20 cm.<br>
+                      3. Detenerse completamente si el obstáculo está a <10 cm.<br><br>
+                    <span style="color: red; font-weight: bold;">Condiciones:</span><br>
+                    - Ajusta la velocidad en tiempo real según la distancia del obstáculo.<br>
+                    - Asegúrate de que el Cutebot frene por completo cuando detecte un objeto muy cercano.<br><br>
+                    
+                    <strong>Nivel Hacker:</strong> **"Explorador Autónomo Inteligente"**<br>
+                    <span style="color: red; font-weight: bold;">Objetivo:</span> Detectar obstáculos, ajustar velocidad y cambiar de dirección automáticamente.<br><br>
+                    <span style="color: red; font-weight: bold;">Instrucciones:</span><br>
+                    - Configura el sensor ultrasónico para medir la distancia en tiempo real.<br>
+                    - Programa el siguiente comportamiento para el Cutebot:<br>
+                      1. Avanzar rápido si no detecta obstáculos cercanos (>20 cm).<br>
+                      2. Reducir velocidad cuando detecte un obstáculo a 10-20 cm.<br>
+                      3. Detenerse completamente si el obstáculo está a <10 cm.<br>
+                      4. Después de detenerse, hacer que el Cutebot gire 90° hacia la izquierda o derecha.<br>
+                      5. Reanudar su movimiento después de girar, continuando su exploración.<br><br>
+                    <span style="color: red; font-weight: bold;">Condiciones:</span><br>
+                    - Asegúrate de que el Cutebot responda dinámicamente en tiempo real a los obstáculos.<br>
+                    - Si hay múltiples objetos en su trayectoria, debe repetir este proceso continuamente.<br><br>
+                    <span style="color: red; font-weight: bold;">Consejo:</span><br>
+                    - Ajusta los tiempos de giro y los límites de distancia para optimizar el comportamiento del Cutebot.<br>
+                    - Prueba tu programa en un circuito con varios obstáculos para simular un entorno realista.
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 5 (20 minutos):</strong> Proyectar Diapositiva 13 "Manos a la Obra". Explicar que los equipos tendrán libertad para acomodar los obstáculos como deseen.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Es momento de poner en marcha nuestra creatividad, Genios! Cada equipo puede acomodar los obstáculos en su circuito como prefieran. Pueden usar su imaginación para simular un entorno realista o creativo. ¡Es su espacio y su reto, háganlo único! Ahora programen, prueben y ajusten sus trayectorias para que los Cutebots se muevan según lo planeado."
+                </td>
+            </tr>
+            <tr id="activity-3-step-6">
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 6 (5 minutos):</strong> Proyectar Diapositiva 14 "Pruebas y Ajustes". Supervisar mientras los equipos prueban y ajustan sus programas.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Genios! Es hora de probar lo que han programado. Coloquen su Cutebot en el circuito, observen cómo interactúa con los obstáculos, y ajusten el código si es necesario. Recuerden: los grandes logros vienen de la experimentación y el ajuste constante. Si algo no sale bien a la primera, ¡intenten de nuevo hasta perfeccionarlo!"
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity" data-time="50">
+    <div class="banner" onclick="toggleContent('team_gnius')" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+            <span style="font-weight: bold; font-size: 1.1em;">🤝 Actividad 4: Team Gnius ⏰ Tiempo: 7 minutos</span>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+            <span style="font-size: 0.9em; color: #e0e0e0;">Trabajo colaborativo para reflexionar y mejorar la programación del Cutebot.</span>
+        </div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                <th style="width: 50%; padding: 10px; text-align: left;">Diálogo Sugerido</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 1 (0.5 minutos):</strong> Proyectar Diapositiva 17 "Introducción al Team Gnius". Explicar cómo los roles y las ideas colaborativas permitirán revisar y mejorar el trabajo.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Genios! Ahora trabajaremos como un verdadero equipo. Usaremos el Team CANVAS para analizar cómo trabajaron juntos y cómo mejorar sus coreografías y programación. Cada equipo tendrá roles específicos: el Líder organizará la conversación, el Programador ajustará los códigos según las ideas del equipo, y el Observador identificará áreas de mejora. ¡El trabajo en equipo siempre lleva al éxito!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 2 (1 minuto):</strong> Proyectar la Diapositiva 18 "Formación de Equipos". Los estudiantes tendrán 1 minuto para formar equipos de 3 y asignar roles: Líder, Programador y Observador.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Tienen 1 minuto para formar equipos de 3 personas. Recuerden: 
+                    <ul>
+                        <li>El Líder organiza la discusión y se asegura de que todos participen.</li>
+                        <li>El Programador ajusta el código según las ideas del equipo.</li>
+                        <li>El Observador analiza qué funcionó y qué puede mejorarse.</li>
+                    </ul>
+                    ¡Trabajemos juntos como un verdadero equipo Gnius!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 3 (3 minutos):</strong> Proyectar la Diapositiva 19 "Team CANVAS". Cada equipo debe: 1. Analizar el trabajo realizado. 2. Proponer mejoras según los roles asignados. 3. Diseñar un plan conjunto para optimizar los resultados.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Usen el Team CANVAS para reflexionar sobre su trabajo. Pregúntense: 
+                    <ul>
+                        <li>¿Qué funcionó bien en nuestra programación?</li>
+                        <li>¿Qué podemos mejorar?</li>
+                        <li>¿Cómo podemos hacer que nuestro programa sea más eficiente?</li>
+                    </ul>
+                    Líderes, guíen la conversación para que todos participen. Programadores, tomen nota de las ideas para aplicarlas más tarde. Observadores, analicen cómo se desempeñó el equipo y propongan mejoras concretas. ¡Es hora de optimizar juntos!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 4 (3 minutos):</strong> Proyectar la Diapositiva 20. Los equipos trabajan en las siguientes tareas: Líder organiza, Programador ajusta códigos, Observador verifica el desempeño del circuito.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Genios! Ahora es el momento de implementar las mejoras. Programadores, ajusten los códigos basándose en las ideas del equipo. Líderes, supervisen que todos estén colaborando y enfocados. Observadores, asegúrense de que los trayectos y la detección de obstáculos funcionen correctamente. ¡Hagan que sus Cutebots sean aún más geniales!"
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity" data-time="50">
+    <div class="banner" onclick="toggleContent('honor_lab')" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="flex-grow: 1;">
+            <span style="font-weight: bold; font-size: 1.1em;">🏅 Actividad 5: Honor the Lab ⏰ Tiempo: 3.5 minutos</span>
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 5px 0;">
+            <span style="font-size: 0.9em; color: #e0e0e0;">Reflexión final y organización del espacio de trabajo.</span>
+        </div>
+    </div>
+    <div id="honor_lab" class="content">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                <th style="width: 50%; padding: 10px; text-align: left; border-right: 1px solid #ddd;">Acción</th>
+                <th style="width: 50%; padding: 10px; text-align: left;">Diálogo Sugerido</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 1 (0.5 minutos):</strong> Proyectar la Diapositiva 22 "Revisión de Objetivos". Leer los objetivos planteados al inicio y reflexionar sobre lo aprendido y logrado en equipo.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "¡Genios! Hoy logramos cosas increíbles. Revisemos juntos los objetivos planteados al inicio de la clase:
+                    <ul>
+                        <li>Programar sensores ultrasónicos para detectar obstáculos.</li>
+                        <li>Diseñar trayectorias inteligentes para nuestros Cutebots.</li>
+                        <li>Colaborar en equipo para optimizar nuestras soluciones.</li>
+                    </ul>
+                    Estoy muy orgulloso del esfuerzo que pusieron y de lo creativos que fueron para superar cada desafío. ¡Ustedes son verdaderos innovadores!"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-right: 1px solid #ddd; vertical-align: top;">
+                    <strong>Paso 2 (3 minutos):</strong> Proyectar la Diapositiva 23 "Organización del Espacio". Guiar a los estudiantes para recoger y organizar todos los materiales utilizados.
+                </td>
+                <td style="padding: 10px; vertical-align: top;">
+                    "Antes de irnos, honremos nuestro espacio de trabajo. Cada equipo es responsable de recoger y organizar los materiales que utilizaron durante la misión:
+                    <ul>
+                        <li>Guarden sus Cutebots y Micro:bits con cuidado.</li>
+                        <li>Asegúrense de recoger la cinta adhesiva y los obstáculos.</li>
+                        <li>Limpien el área de trabajo y dejen todo en perfecto orden.</li>
+                    </ul>
+                    ¡Recuerden, el respeto por nuestro espacio es tan importante como el esfuerzo que pusimos en nuestra programación!"
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+    </div> <!-- Cierre del container -->
+
+    <!-- Scripts adicionales -->
+    <script>
+        // Aquí puedes agregar scripts adicionales si es necesario
+    </script>
+</body>
+</html>
